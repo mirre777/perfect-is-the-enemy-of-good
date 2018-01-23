@@ -1,10 +1,37 @@
 <!doctype html>
 <html>
 <head>
-    <title></title>
+    <title>Imageboard</title>
 </head>
 <body>
+    <h2>Upload your image</h2>
+    <main>
+        <menu>
+
+            <form>
+                <input v-model="formStuff.title"type="text" name="title">
+                <input v-model="formStuff.description"type="text" name="description">
+                <input v-model="formStuff.username" type="text" name="username">
+                <input type="file" name="file" v-on:change="chooseFile"><br>
+                <!-- cant use v model on files. use function in script, methods -->
+                <button class="button" v-on:click="uploadFile" type="submit">Upload</button>
+            </form>
+        </menu>
+
+        <h2><u>All images</u></h2>
+        <div id="images" v-if="images.length > 0">
+            <div v-for="image in images">
+                <img v-bind:src=" 'https://s3.amazonaws.com/spicedling/' + image.image">
+                <p>{{image.title}}</p>
+                <p>{{image.description}}</p>
+            </div>
+        </div>
+    </main>
+
+
     <script src="/js/vue.js"></script>
     <script src="/js/axios.min.js"></script>
+    <script src="/js/script.js"></script>
+    <link rel="stylesheet" href="stylesheet.css">
 </body>
 </html>

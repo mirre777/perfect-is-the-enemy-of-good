@@ -1,0 +1,37 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    display: grid;
+    grid-template-columns: repeat(4, 25vw);
+    grid-template-rows: repeat(8, 12.5vw);
+}
+menu {
+    grid-column: 1 / 4;
+}
+input {
+    border-radius: 30px;
+    height: 25px;
+    margin: 10px;
+}
+p {
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 15px;
+
+}
+h2 {
+    font-family: "Helvetica Neue";
+    font-size: 25px;
+    line-height: 45px;
+    letter-spacing: 1px;
+    font-weight: bolder;
+}
+
+h2, form {
+    margin: 10px;
+}
+img {
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+}
