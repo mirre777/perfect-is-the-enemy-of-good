@@ -6,7 +6,7 @@ var path = require('path');
 var getImages = require('./dbqueries.js').getImages;
 
 var diskStorage = multer.diskStorage({
-    destination: function (req, file, callback) {
+    destination: function (request, file, callback) {
         callback(null, __dirname + '/uploads');
     },
     filename: function (req, file, callback) {
@@ -32,7 +32,7 @@ app.listen(8080, function() {
 });
 
 
-app.get('/imageboard', function(request, response) {
+app.get('/images', function(request, response) {
     console.log('in app.get /imageboard');
     getImages()
         .then(function(results) {
@@ -47,8 +47,9 @@ app.get('/imageboard', function(request, response) {
 });
 
 
-//The call to single indicates that we are only expecting one file. The string passed to single is the name of the field in the request.
-app.post('/images', uploader.single('file'), function(request, response) {
+//PART 2
+//The call to single indicates that we are only expecting one file. The string passed to single is the name of the field in the request (file).
+app.post('/upload', uploader.single('file'), function(request, response) {
     console.log('in app.post /images');
     if (request.file) {
         response.json({

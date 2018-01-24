@@ -9,9 +9,9 @@
         <menu>
 
             <form>
-                <input v-model="formStuff.title"type="text" name="title">
-                <input v-model="formStuff.description"type="text" name="description">
-                <input v-model="formStuff.username" type="text" name="username">
+                <input v-model="formStuff.title"type="text" name="title" placeholder="image name">
+                <input v-model="formStuff.description"type="text" name="description" placeholder="description">
+                <input v-model="formStuff.username" type="text" name="username" placeholder="your name">
                 <input type="file" name="file" v-on:change="chooseFile"><br>
                 <!-- cant use v model on files. use function in script, methods -->
                 <button class="button" v-on:click="uploadFile" type="submit">Upload</button>

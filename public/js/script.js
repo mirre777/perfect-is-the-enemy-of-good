@@ -20,7 +20,7 @@
         //mounted: runs after everything is loaded
         mounted: function() {
             var that = this;
-            axios.get('/imageboard')
+            axios.get('/images')
                 .then(function(response) {
                     console.log('response from server with db query', response.data.allimages);
                     //allimages is what we get back from db query. Then fill this instace of vue.images with this data.
@@ -48,6 +48,7 @@
                 axios.post('/upload', formProperties)
                     .then(function(results) {
                         console.log('response from server', results);
+                        
                     })
                     .catch(function(err) {
                         console.log('error in axios.post /upload, formproperties did not send', err);
