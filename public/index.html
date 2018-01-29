@@ -4,29 +4,52 @@
     <title>Imageboard</title>
 </head>
 <body>
-    <h2>Upload your image</h2>
+
     <main>
         <menu>
-
+            <h2 id="title">Upload your image</h2>
             <form>
                 <input v-model="formStuff.title"type="text" name="title" placeholder="image name">
                 <input v-model="formStuff.description"type="text" name="description" placeholder="description">
                 <input v-model="formStuff.username" type="text" name="username" placeholder="your name">
                 <input type="file" name="file" v-on:change="chooseFile"><br>
-                <!-- cant use v model on files. use function in script, methods -->
                 <button class="button" v-on:click="uploadFile" type="submit">Upload</button>
             </form>
+            <h2><u>All images</u></h2>
         </menu>
 
-        <h2><u>All images</u></h2>
-        <div id="images" v-if="images.length > 0">
-            <div v-for="image in images">
-                <img v-bind:src=" 'https://s3.amazonaws.com/spicedling/' + image.image">
-                <p>{{image.title}}</p>
-                <p>{{image.description}}</p>
-            </div>
+    <div class="wrapper">
+        <div id="images" v-for="image in images" @click="openModal(image.id)">
+            <img v-bind:src="image.image">
+            <p>{{image.title}}</p>
+            <p>{{image.description}}</p>
+            <p>{{image.username}}</p>
         </div>
+    </div>
+    <image-modal v-if="imageId" v-bind:image-id="imageId">
+    </image-modal>
     </main>
+
+
+<!-- //////////////vue component templates//////////////////////// -->
+<script id="modal-template" type="x-template">
+<div class="image-modal" v-if="singleImage" v-on:kydown="closeWindow">
+    <img v-bind:src="singleImage.image">
+    <h1>{{singleImage.title}}</h1>
+    <p>{{singleImage.description}}</p>
+    <p>{{singleImage.username}}</p>
+    <div class="post-comments">
+        <input v-model="comments.username" type="text" name="username" placeholder="username">
+        <input v-model="comments.comment" type="text" name="comment" placeholder="comment here"><br>
+        <button class="button" v-on:click="postComment" type="submit">Upload</button>
+    </div>
+    <div v-for="comment in comments" class="see-comments">
+        <p>{{comment.username}}</p>
+        <p>{{comment.comment}}</p>
+        <p>{{comment.postedAt}}</p>
+    </div>
+</div>
+</script>
 
 
     <script src="/js/vue.js"></script>
