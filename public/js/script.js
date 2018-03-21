@@ -28,14 +28,11 @@
                 this.comments.postedAt = '';
             },
             /////////////fix this
-            closeWindow: function(e) {
+            closeWindow: function() {
                 console.log('   in closeWindow');
-                if(e.which == 27){
-                    document.querySelector('.modal-template')
-                        .css({
-                            display: "hidden"
-                        });
-                }
+                this.singleImage = null;
+                this.$emit('closed');
+                console.log('this.singleImage: ', this.singleImage);
             }
         },
         data: function() {
@@ -50,7 +47,7 @@
             axios.get(`/images/` + that.imageId)
             //all information of ONE image
                 .then(resultsjson => {
-                    console.log('this is singleImage: ', resultsjson.data.singleImageResults,' this is comments: ',resultsjson.data.comments);
+                    console.log('this is singleImage: ', resultsjson.data.singleImageResults,' this is comments: ', resultsjson.data.comments);
                     console.log(resultsjson);
                     that.singleImage = resultsjson.data.singleImageResults;
                     that.comments = resultsjson.data.comments;
@@ -131,6 +128,10 @@
             },
             openModal: function(imageId) {
                 this.imageId = imageId;
+                console.log('this.imageId: ', this.imageId);
+            },
+            imageIdReset: function() {
+                this.imageId = null;
             }
         }
     });

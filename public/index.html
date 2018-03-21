@@ -7,14 +7,17 @@
 
     <main>
         <menu>
-            <h2 id="title">Upload your image</h2>
-            <form>
-                <input v-model="formStuff.title"type="text" name="title" placeholder="image name">
-                <input v-model="formStuff.description"type="text" name="description" placeholder="description">
-                <input v-model="formStuff.username" type="text" name="username" placeholder="your name">
-                <input type="file" name="file" v-on:change="chooseFile"><br>
-                <button class="button" v-on:click="uploadFile" type="submit">Upload</button>
-            </form>
+            <img src="./perfect_logo.png" alt="image: perfect is the enemy of the good">
+            <div id="upload-div">
+                <img src="./perfect_upload.png" alt="upload your image">
+                <form>
+                    <input v-model="formStuff.title"type="text" name="title" placeholder="image name">
+                    <input v-model="formStuff.description"type="text" name="description" placeholder="description">
+                    <input v-model="formStuff.username" type="text" name="username" placeholder="your name">
+                    <input type="file" name="file" v-on:change="chooseFile"><br>
+                    <button class="button" v-on:click="uploadFile" type="submit">Upload</button>
+                </form>
+            </div>
             <h2><u>All images</u></h2>
         </menu>
 
@@ -26,14 +29,14 @@
             <p>{{image.username}}</p>
         </div>
     </div>
-    <image-modal v-if="imageId" v-bind:image-id="imageId">
+    <image-modal v-if="imageId" v-bind:image-id="imageId" v-on:closed="imageIdReset">
     </image-modal>
     </main>
 
 
 <!-- //////////////vue component templates//////////////////////// -->
 <script id="modal-template" type="x-template">
-<div class="image-modal" v-if="singleImage" v-on:kydown="closeWindow">
+<div class="image-modal" v-if="singleImage" v-on:click="closeWindow">
     <img v-bind:src="singleImage.image">
     <h1>{{singleImage.title}}</h1>
     <p>{{singleImage.description}}</p>
@@ -41,7 +44,7 @@
     <div class="post-comments">
         <input v-model="comments.username" type="text" name="username" placeholder="username">
         <input v-model="comments.comment" type="text" name="comment" placeholder="comment here"><br>
-        <button class="button" v-on:click="postComment" type="submit">Upload</button>
+        <button class="button" v-on:click="postComment" type="submit">Send</button>
     </div>
     <div v-for="comment in comments" class="see-comments">
         <p>{{comment.username}}</p>
@@ -52,9 +55,9 @@
 </script>
 
 
-    <script src="/js/vue.js"></script>
-    <script src="/js/axios.min.js"></script>
-    <script src="/js/script.js"></script>
+    <script src="./js/vue.js"></script>
+    <script src="./js/axios.min.js"></script>
+    <script src="./js/script.js"></script>
     <link rel="stylesheet" href="stylesheet.css">
 </body>
 </html>

@@ -1,7 +1,7 @@
 const knox = require('knox');
 let secrets;
 const fs = require('fs');
-const s3Url = 'https://s3.amazonaws.com/spicedling/';
+const s3Url = 'https://s3.amazonaws.com/imageboard-spiced/';
 
 
 //middleware to upload fomr server to s3
@@ -15,7 +15,7 @@ if (process.env.NODE_ENV == 'production') {
 const client = knox.createClient({
     key: secrets.AWS_KEY,
     secret: secrets.AWS_SECRET,
-    bucket: 'spicedling'
+    bucket: 'imageboard-spiced'
 });
 
 
