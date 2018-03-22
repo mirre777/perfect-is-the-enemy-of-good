@@ -35,3 +35,8 @@ There is a modal that shows the images in a larger size, we will also display th
 # Comments show
 
 ![alt text](https://github.com/mirre777/perfect-is-the-enemy-of-good/blob/master/imageboard4.png)
+
+
+# More info:
+
+http://www.mirresnelting.com/image-box/
