@@ -22,10 +22,16 @@ There is a modal that shows the images in a larger size, we will also display th
 ![alt text](https://github.com/mirre777/perfect-is-the-enemy-of-good/blob/master/imageboard.png)
 
 
+# Uploaded images
+
 ![alt text](https://github.com/mirre777/perfect-is-the-enemy-of-good/blob/master/imageboard2.png)
 
 
+# Comment
+
 ![alt text](https://github.com/mirre777/perfect-is-the-enemy-of-good/blob/master/imageboard3.png)
 
+
+# Comments show
 
 ![alt text](https://github.com/mirre777/perfect-is-the-enemy-of-good/blob/master/imageboard4.png)
