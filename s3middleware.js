@@ -8,7 +8,7 @@ const s3Url = 'https://s3.amazonaws.com/imageboard-spiced/';
 if (process.env.NODE_ENV == 'production') {
     secrets = process.env; // in prod the secrets are environment variables
 } else {
-    secrets = require('./secrets'); // secrets.json is in .gitignore
+    secrets = require('./secret'); // secrets.json is in .gitignore
 }
 
 
